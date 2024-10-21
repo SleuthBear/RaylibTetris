@@ -1,0 +1,21 @@
+# ninja log v6
+0	24	1729489673322038450	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	c697fe1704a0ef49
+0	24	1729489673322038450	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	c697fe1704a0ef49
+24	53745	1729489727040698844	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	9893ee1fc6db8ba2
+24	53745	1729489727040698844	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	9893ee1fc6db8ba2
+53745	54537	1729489727041187326	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	2f41b8f8154f6090
+53745	54537	1729489727041187326	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	2f41b8f8154f6090
+54537	54547	1729489727842682744	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	1077e8357cb634f9
+54537	54547	1729489727842682744	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	1077e8357cb634f9
+54547	54556	1729489727852368596	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	82f188649a6fcb3a
+54547	54556	1729489727852368596	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	82f188649a6fcb3a
+54556	54566	1729489727862376603	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	9af433fb0c4bc3de
+54556	54566	1729489727862376603	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	9af433fb0c4bc3de
+54566	54576	1729489727871889337	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	deccd2eeb7095ce4
+54566	54576	1729489727871889337	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	deccd2eeb7095ce4
+54576	54585	1729489727881363697	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	27de365dd6d9b7bc
+54576	54585	1729489727881363697	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	27de365dd6d9b7bc
+54585	54599	1729489727894637043	CMakeFiles/raylib-populate-complete	fe45beb03bd99f47
+54585	54599	1729489727894637043	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	fe45beb03bd99f47
+54585	54599	1729489727894637043	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/CMakeFiles/raylib-populate-complete	fe45beb03bd99f47
+54585	54599	1729489727894637043	/Users/dylanbeaumont/CLionProjects/RaylibTetris/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	fe45beb03bd99f47
