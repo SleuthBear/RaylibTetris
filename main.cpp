@@ -9,9 +9,16 @@ int FALLSPEED = 1;
 int DROPSPEED = 1;
 
 enum Shape {
-    SQUARE,
-    LINE
+    O = 0,
+    I = 1,
+    S = 2,
+    Z = 3,
+    L = 4,
+    J = 5,
+    T = 6
 };
+
+Color COLORS[] = {RED, BLUE, GREEN, YELLOW};
 
 typedef struct IntVector2 {
     int x;
@@ -24,6 +31,7 @@ class Tetromino {
     public:
     Shape shape;
     IntVector2 blocks[4];
+    Color color;
 
     void rotate() {
         //rotate to maintain the height
@@ -85,7 +93,7 @@ class Tetromino {
     void draw() {
         for(int i = 0; i < 4; i++) {
             Rectangle rec = {blocks[i].x*CELLSIZE, blocks[i].y*CELLSIZE, CELLSIZE, CELLSIZE};
-            DrawRectangleRounded(rec, 0.25, 5, BLUE);
+            DrawRectangleRounded(rec, 0.25, 5, color);
         }
     }
 };
@@ -94,29 +102,39 @@ void ReadInput(Tetromino *tetro, bool (&grid)[GRIDHEIGHT][GRIDWIDTH]);
 bool CheckCollision(Tetromino *tetro, bool (&grid)[GRIDHEIGHT][GRIDWIDTH]);
 void DrawGrid(bool (&grid)[GRIDHEIGHT][GRIDWIDTH]);
 bool ValidPosition(Tetromino *tetro, bool (&grid)[GRIDHEIGHT][GRIDWIDTH]);
+void ClearGrid(bool (&grid)[GRIDHEIGHT][GRIDWIDTH]);
+Tetromino NewTetro(int color, int shape);
 
 int main() {
     const int screenWidth = GRIDWIDTH*CELLSIZE;
     const int screenHeight = GRIDHEIGHT*CELLSIZE;
     InitWindow(screenWidth, screenHeight, "Tetris");
-    Tetromino tetro = {LINE, {{1,5},{1,6}, {1,7}, {1,8}}};
+    int nTetros = 0;
+    Tetromino tetro = NewTetro(nTetros, rand() % 7);
     bool grid[GRIDHEIGHT][GRIDWIDTH] = {false};
-    grid[15][5] = true;
 
     // start game loop
+    float timer = 0.0f;
     while(!WindowShouldClose()) {
 
         float deltaTime = GetFrameTime();
         SetTargetFPS(60);
-
+        timer += deltaTime;
         BeginDrawing();
             ClearBackground(LIGHTGRAY);
             ReadInput(&tetro, grid);
+            if(timer > 0.5) {
+                timer = 0.0f;
+                tetro.shiftY(1);
+            }
             bool collision = CheckCollision(&tetro, grid);
             if(collision) {
-                tetro = Tetromino {LINE, {{2, 1}, {3, 1}, {4,1}, {5, 1}}};
+                nTetros = (nTetros + 1) % 4;
+
+                tetro = NewTetro(nTetros, rand() % 7);
             }
             tetro.draw();
+            ClearGrid(grid);
             DrawGrid(grid);
         EndDrawing();
     }
@@ -166,4 +184,41 @@ bool ValidPosition(Tetromino *tetro, bool (&grid)[GRIDHEIGHT][GRIDWIDTH]) {
         }
     }
     return true;
+}
+
+void ClearGrid(bool (&grid)[GRIDHEIGHT][GRIDWIDTH]) {
+    for(int i = 0; i < GRIDHEIGHT; i++) {
+        bool isFull = true;
+        for(int j = 0; j < GRIDWIDTH; j++) {
+            if(grid[i][j] == false) {
+                isFull = false;
+            }
+        }
+        if(isFull) {
+            for(int k = i; k > 0; k--) {
+                for(int j = 0; j < GRIDWIDTH; j++) {
+                    grid[k][j] = grid[k-1][j];
+                }
+            }
+        }
+    }
+}
+
+Tetromino NewTetro(int color, int shape) {
+    switch(shape) {
+        case I:
+            return Tetromino{I, {{4,0}, {5,0}, {6,0}, {7,0}}, COLORS[color]};
+        case L:
+            return Tetromino{L, {{4,1}, {4,0}, {5,0}, {6,0}}, COLORS[color]};
+        case J:
+            return Tetromino{J, {{4,0}, {4,1}, {5,1}, {6,1}}, COLORS[color]};
+        case S:
+            return Tetromino{S, {{4,1}, {5,1}, {5,0}, {6,0}}, COLORS[color]};
+        case Z:
+            return Tetromino{Z, {{4,0}, {5,0}, {5,1}, {6,1}}, COLORS[color]};
+        case O:
+            return Tetromino{O, {{4,0}, {5,0}, {4,1}, {5,1}}, COLORS[color]};
+        case T:
+            return Tetromino{T, {{4,0}, {5,0}, {5,1}, {6,0}}, COLORS[color]};
+    }
 }
