@@ -102,6 +102,8 @@ int main() {
     Tetromino tetro = {LINE, {{1,5},{1,6}, {1,7}, {1,8}}};
     bool grid[GRIDHEIGHT][GRIDWIDTH] = {false};
     grid[15][5] = true;
+
+    // start game loop
     while(!WindowShouldClose()) {
 
         float deltaTime = GetFrameTime();
